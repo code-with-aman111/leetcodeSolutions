@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        vector<int>ans1;
+        vector<int>ans2;
+        vector<int>ans3;
+        unordered_map<int,int>u1;
+         unordered_map<int,int>u2;
+        for(int i=0;i<nums1.size();i++){
+               u1[nums1[i]]++;
+        }
+         for(int i=0;i<nums2.size();i++){
+               u2[nums2[i]]++;
+        }
+       for(auto r:u1){
+           ans1.push_back(r.first);
+       }
+         for(auto r:u2){
+           ans2.push_back(r.first);
+       }
+       for(int i=0;i<ans1.size();i++){
+        for(int j=0;j<ans2.size();j++){
+               if(ans1[i]==ans2[j]){
+                   ans3.push_back(ans1[i]);
+               }
+        }
+       }
+       return ans3;
+    }
+};
