@@ -1,0 +1,22 @@
+class Solution {
+public:
+     string rev(string &str){
+         int n=str.length();
+         for(int i=0;i<n/2;i++){
+             swap(str[i],str[n-i-1]);
+         }
+         return str;
+     }
+    int maximumNumberOfStringPairs(vector<string>& words){
+       int count=0;
+        for(int i=0;i<words.size();i++){
+            for(int j=i+1;j<words.size();j++){
+              //  string str=rev(words[j]);
+         if(words[i]==rev(words[j])){
+                       count++;
+                }
+            }
+        }
+        return count;
+    }
+};
