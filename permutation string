@@ -1,0 +1,19 @@
+class Solution {
+public:
+    string reverse(string &s3){
+        int n=s3.size();
+        int v=1;
+        while(v>=n){
+            swap(s3[v],s3[n]);
+            v++;
+            n--;
+        }
+        return s3;
+    }
+    bool checkInclusion(string s1, string s2) {
+        if(s2.find(reverse(s1)) || s2.find(s1)){
+            return true;
+        }
+        return false;
+    }
+};
