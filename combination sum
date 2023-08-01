@@ -1,0 +1,28 @@
+class Solution {
+public:
+/*
+Since this is a constraint satisfaction problem that asks you to enumerate over all solutions that satisfy a given set of constraints, backtracking
+can be used to implement a solution.
+*/
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+       vector<vector<int>> solutions;
+       vector<int> partial_solution;
+       int start = 0;
+       check_nodes(candidates, target, solutions, partial_solution, start);
+       return solutions; 
+    }
+
+    void check_nodes(vector<int>& candidates, int remains, vector<vector<int>>& solutions, vector<int>& partial_solution, int start){
+      if(remains == 0){
+        solutions.push_back(partial_solution);
+      } else {
+        for (int i = start; i < candidates.size(); i++){
+          partial_solution.push_back(candidates[i]);
+          if(candidates[i] <= remains){
+            check_nodes(candidates, remains - candidates[i], solutions, partial_solution, i);
+          }     
+          partial_solution.pop_back();
+        }
+      }
+    }
+};
