@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+int main() {
+  int arr[10]={1,3,4,5,6};
+  cout<<&arr[0];
+  cout<<endl;
+  int *p=&arr[0];
+  cout<<*p<<endl;
+  cout<<p<<" ";
+  cout<<p+1<<" ";
+char ch[6]="abcde";
+char *c=&ch[0];
+cout<<&ch[0]<<endl;
+char val='x';
+char *temp=&val;
+cout<<temp<<endl;
+return 0;
+}
