@@ -1,0 +1,14 @@
+#include <bits/stdc++.h> 
+string newval(int s,int n,string str){
+	if(s>n){
+		return str;
+	}
+     else{
+	   swap(str[s],str[n]);
+	 }
+   return newval(s+1,n-1,str);
+}
+string reverseString(string str)
+{
+	return newval(0,str.size()-1,str);
+}
