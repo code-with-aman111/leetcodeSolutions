@@ -1,0 +1,20 @@
+class Solution {
+    private:
+    void nikal(vector<int>val,vector<vector<int>>&out,int index,vector<int>nums){
+      if(index>=nums.size()){
+          out.push_back(val);
+          return;
+      }
+      nikal(val,out,index+1,nums);
+      val.push_back(nums[index]);
+       nikal(val,out,index+1,nums);
+    } 
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<int>val;
+        vector<vector<int>>out;
+        int index=0;
+        nikal(val,out,index,nums);
+        return out;
+    }
+};
