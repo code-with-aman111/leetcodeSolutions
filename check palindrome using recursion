@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+string reverse(string name,int i,int n){
+  if(i==n || i==n-1){
+    return name;
+  }
+  swap(name[i],name[n]);
+ return reverse(name,i+1,n-1);
+}
+bool ispalindrome(string name){
+  int i=0;
+  int n=name.size();
+  string r=reverse(name,i,n-1);
+  if(r==name){
+    return true;
+  }
+  return false;
+}
+int main(){
+  string name="amma";
+  cout<<ispalindrome(name);
+
+}
