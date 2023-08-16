@@ -1,0 +1,14 @@
+#include<bits/stdc++.h>
+using namespace std;
+int printnum(int i,int n,int sum){
+  if(i>n){
+    return sum;
+  }
+  sum+=i;
+  printnum(i+1,n,sum);
+}
+int main(){
+  int i=1;
+  int n=6;
+  cout<<printnum(1,6,0);
+}
