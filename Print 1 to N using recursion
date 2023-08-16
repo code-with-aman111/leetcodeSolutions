@@ -1,0 +1,14 @@
+#include<bits/stdc++.h>
+using namespace std;
+void printnum(int i,int n){
+  if(i>n){
+    return ;
+  }
+  cout<<i<<" ";
+  printnum(i+1,n);
+}
+int main(){
+  int i=1;
+  int n=6;
+  printnum(1,6);
+}
