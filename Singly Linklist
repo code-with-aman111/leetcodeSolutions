@@ -14,6 +14,47 @@ void InsertAThead(Node* &head,int d){
     temp->next=head;
     head=temp;
 }
+void Insertatpos(Node* &tail,Node* &head,int pos,int d){
+    Node* temp=head;
+    if(pos==1){
+        InsertAThead(head,d);
+        return;
+    }
+    int cnt=1;
+    while(cnt<pos-1){
+        temp=temp->next;
+        cnt++;
+    }
+    if(temp->next==NULL){
+       Insertattail(tail,d);
+        return;
+    }
+    Node* nodetoinsert=new Node(d);
+    nodetoinsert->next=temp->next;
+    temp->next=nodetoinsert;
+}
+void deletedata(int pos ,Node* &head){
+    if(pos==1){
+        Node* temp=head;
+        head=head->next;
+        temp->next=NULL;
+        delete temp;
+    }
+    else{
+       // Node* temp=temp;
+        Node* pre=NULL;
+        Node* cur=head;
+        int cnt=1;
+        while(cnt<pos){
+            pre=cur;
+            cur=cur->next;
+            cnt++;
+        }
+        pre->next=cur->next;
+        cur->next=NULL;
+        delete cur;
+    }
+}
 void print(Node* &head){
     Node* temp=head;
     while(temp!=NULL){
