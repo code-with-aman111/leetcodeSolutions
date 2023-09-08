@@ -1,0 +1,15 @@
+Node *findMiddle(Node *head) {
+   Node* curr=head;
+   Node* temp=head;
+   int cnt=0;
+   while(curr!=NULL){
+       cnt++;
+       curr=curr->next;
+   }
+   int r=1;
+   while(r!=((cnt/2)+1)){
+    temp=temp->next;
+    r++;
+   }
+   return temp;
+}
