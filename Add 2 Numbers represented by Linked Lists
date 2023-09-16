@@ -1,0 +1,72 @@
+class Solution
+{   private:
+    struct Node* reverse(struct Node* head){
+      struct Node*curr=NULL;
+      struct Node* temp=head;
+      struct Node* prev=NULL;
+      while(temp!=NULL){
+          curr=temp->next;
+          temp->next=prev;
+          prev=temp;
+          temp=curr;
+      }
+      return prev;
+    }
+    void insertathead(struct Node* headnode, struct Node* tailnode,int digit){
+       struct Node* temp=new  struct Node(digit);
+       if(headnode==NULL){
+           headnode=temp;
+           tailnode=temp;
+       }
+       else{
+           temp=temp->next;
+           tailnode=temp;
+       }
+       
+    }
+     struct Node* addnode( struct Node* first,struct Node* second){
+           struct Node* headnode=NULL;
+           struct Node* tailnode=NULL;
+           int carry=0;
+           while(first!=NULL && second!=NULL){
+              int data=first->data+second->data+carry;
+              int digit=data%10;
+              insertathead(headnode,tailnode,digit);
+              carry=data/10;
+              first=first->next;
+              second=second->next;
+           }
+           while(first!=NULL){
+             int data=first->data+carry;
+              int digit=data%10;
+              insertathead(headnode,tailnode,digit);
+              carry=data/10;
+              first=first->next;
+           }
+             while(second!=NULL){
+              int data=second->data+carry;
+              int digit=data%10;
+              insertathead(headnode,tailnode,digit);
+              carry=data/10;
+              second=second->next;
+           }
+           while(carry!=0){
+             int data=carry;
+             int digit=data%10;
+             insertathead(headnode,tailnode,digit);
+            carry=data/10;
+           
+           }
+           return headnode;
+     }
+    public:
+    struct Node* addTwoLists(struct Node* first, struct Node* second)
+    {
+      first=reverse(first);
+      second=reverse(second);
+      Node* ans=addnode(first,second);
+    ans=reverse(ans);
+    return ans;
+       
+    }
+};
