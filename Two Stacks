@@ -1,0 +1,58 @@
+#include <bits/stdc++.h> 
+class TwoStack {
+
+public:
+   int temp1;
+   int temp2;
+   int *arr;
+   int size;
+    TwoStack(int s) {
+      this->size=s;
+      temp1=-1;
+      temp2=size;
+      arr=new int[size];
+    }
+    
+  
+    void push1(int num) {
+       if(temp2-temp1>1){
+           temp1++;
+           arr[temp1]=num;
+       }
+    //    else{
+    //        cout<<"stack overflow"<<" ";
+    //    }
+    }
+    void push2(int num) {
+       if(temp2-temp1>1){
+           temp2--;
+           arr[temp2]=num;
+       }
+    //    else{
+    //        cout<<"stack overflow"<<" ";
+    //    } 
+    }
+
+    int pop1() {
+      if(temp1>=0){
+          int ans=arr[temp1];
+          temp1--;
+          return ans;
+      }
+      else{
+          return -1;
+      }
+    }
+
+   
+    int pop2() {
+       if(temp2<size){
+           int ans=arr[temp2];
+           temp2++;
+           return ans;
+       }
+       else{
+           return -1;
+       }
+    }
+};
