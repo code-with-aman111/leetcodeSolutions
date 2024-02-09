@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<int> commonElements(int A[], int B[], int C[], int n1, int n2, int n3) {
+       map<int, int> all;
+        vector<int> ans;
+        set<int> A1(A, A + n1);
+        set<int> B1(B, B + n2);
+        set<int> C1(C, C + n3);
+        
+        for (auto x:A1)
+            all[x]++;
+        for (auto x:B1)
+            all[x]++;
+        for (auto x:C1)
+            all[x]++;
+        
+        for (auto x : all) {
+            if (x.second >= 3) {
+                ans.push_back(x.first);
+            }
+        }
+         sort(ans.begin(),ans.end());
+        return ans;
+    }
+};
