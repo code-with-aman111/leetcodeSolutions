@@ -1,0 +1,20 @@
+class Solution{
+public:	
+	
+	
+	int isPalindrome(string S)
+	{    string r=S;
+	    int s=0;
+	    int se=S.size()-1;
+	    while(s<se){
+	        swap(S[s],S[se]);
+	        s++;
+	        se--;
+	    }
+	    if(S==r){
+	        return 1;
+	    }
+	    return 0;
+	}
+
+};
