@@ -1,0 +1,27 @@
+class Solution
+{
+public:
+    void solve(vector<string>& Val, string S, int index){
+        if(index >= S.size()){
+            Val.push_back(S); 
+            return;
+        }
+        unordered_set<char> swapped;
+        for(int i = index; i < S.size(); i++){
+            if (swapped.find(S[i]) != swapped.end())
+                continue;
+            swap(S[i], S[index]);
+            solve(Val, S, index + 1);
+            swap(S[i], S[index]);
+            swapped.insert(S[i]);
+        }
+    }
+    
+    vector<string> find_permutation(string S)
+    {
+        vector<string> Val;
+        int index = 0;
+        solve(Val, S, index);
+        return Val;
+    }
+};
