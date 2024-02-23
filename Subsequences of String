@@ -1,0 +1,15 @@
+#include <bits/stdc++.h> 
+vector<string> subsequences(const string& str) {
+    vector<string> subsequences;
+    int n = str.size();
+    
+    for (int start = 0; start < n; start++) {
+        string subsequence = "";
+        for (int end = start; end < n; end++) {
+            subsequence += str[end];
+            subsequences.push_back(subsequence);
+        }
+    }
+    
+    return subsequences;
+}
