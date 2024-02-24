@@ -1,0 +1,25 @@
+class Solution {
+    public:
+    void check_p(string s1,vector<string>&ans,int index){
+        if(index>=s1.size()){
+            ans.push_back(s1);
+            return;
+        }
+       for(int i=index;i<s1.size();i++){
+           swap(s1[i],s1[index]);
+           check_p(s1,ans,index+1);
+           swap(s1[i],s1[index]);
+       }
+    }
+    bool checkInclusion(string s1, string s2) {
+      vector<string>ans;
+      int index=0;
+      check_p(s1,ans,index);
+      for(auto i:ans){
+          if(s2.find(i)!= string::npos){
+             return true;
+          }
+      }
+      return false;
+    }
+};
