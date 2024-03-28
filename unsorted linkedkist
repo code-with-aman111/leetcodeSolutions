@@ -1,0 +1,21 @@
+Node *removeDuplicates(Node *head)
+{
+  if (head == NULL) {
+    return NULL;
+  }
+  Node *curr = head;
+  std::map<int, bool> temp;
+  temp[curr->data] = true;
+  while (curr->next != NULL) {
+    if (temp.find(curr->next->data) != temp.end()) {
+      Node *next_r = curr->next->next;
+      Node *val = curr->next;
+      delete val;
+      curr->next = next_r;
+    } else {
+      temp[curr->next->data] = true;
+      curr = curr->next;
+    }
+  }
+  return head;
+}
