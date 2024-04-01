@@ -1,0 +1,69 @@
+class Solution
+{
+    public:
+    struct Node* reverse(struct Node* num1){
+      Node* curr=num1;
+      Node* prev=NULL;
+      Node* next=NULL;
+      while(curr!=NULL){
+          next=curr->next;
+          curr->next=prev;
+          prev=curr;
+          curr=next;
+      }
+      return prev;
+    }
+     void insertattail( struct Node* &headnum, struct Node* &tailnum,int digit){
+          Node* temp=new Node(digit);
+         if(headnum==NULL){
+             headnum=temp;
+             tailnum=temp;
+             return;
+         }
+         else{
+             tailnum->next=temp;
+             tailnum=temp;
+         }
+     }
+    struct Node* sum(struct Node* num1, struct Node* num2){
+         Node* headnum=NULL;
+          Node* tailnum=NULL;
+        int carry=0;
+        while(num1!=NULL && num2!=NULL){
+        int sum=num1->data+num2->data+carry;
+        int digit=sum%10;
+        insertattail(headnum,tailnum,digit);
+        carry=sum/10;
+        num1=num1->next;
+        num2=num2->next;
+        }
+        while(num1!=NULL){
+         int sum=num1->data+carry;
+         int digit=sum%10;
+         insertattail(headnum,tailnum,digit);
+         carry=sum/10;
+         num1=num1->next;
+        }
+        while(num2!=NULL){
+         int sum=num2->data+carry;
+         int digit=sum%10;
+         insertattail(headnum,tailnum,digit);
+         carry=sum/10;
+         num2=num2->next;
+        }
+        while(carry!=0){
+            int sum=carry;
+            int digit=sum%10;
+             insertattail(headnum,tailnum,digit);
+              carry=sum/10;
+        }
+        return headnum;
+    }
+    struct Node* addTwoLists(struct Node* num1, struct Node* num2)
+    {
+     num1=reverse(num1);
+     num2=reverse(num2);
+      Node* ans=sum(num1,num2);
+      ans=reverse(ans);
+     return ans;
+    }
