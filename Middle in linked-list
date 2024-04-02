@@ -1,0 +1,19 @@
+class Solution{
+    public:
+    int getMiddle(Node *head)
+    {
+       Node* temp=head;
+       int cnt=0;
+       while(temp!=NULL){
+           temp=temp->next;
+           cnt++;
+       }
+       int ans=(cnt/2);
+       int val=0;
+       while(val!=ans){
+           head=head->next;
+           val++;
+       }
+       return head->data;
+    }
+};
