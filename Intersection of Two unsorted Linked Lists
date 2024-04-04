@@ -1,0 +1,32 @@
+class Solution{
+  public:
+    Node* findIntersection(Node* head1, Node* head2)
+    {
+        unordered_map<int,bool>pres;
+        while(head2!=NULL){
+            pres[head2->data]=true;
+            head2=head2->next;
+        }
+        Node* head=NULL;
+        Node* curr=NULL;
+        while(head1!=NULL){
+            if(pres.find(head1->data)!=pres.end()){
+                if(head==NULL){
+                Node* t=new Node(head1->data);
+                head=t;
+                curr=t;
+                }
+                else{
+                   Node* t=new Node(head1->data);
+                   curr->next=t;
+                   curr=t;
+                }
+                head1=head1->next;
+            }
+            else{
+                head1=head1->next;
+            }
+        }
+        return head;
+    }
+};
