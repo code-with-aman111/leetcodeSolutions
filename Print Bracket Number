@@ -1,0 +1,21 @@
+class Solution{
+public:	
+	vector<int> bracketNumbers(string S)
+	{
+	   vector<int>ans;
+	   stack<int>s;
+	   int cnt=0;
+	   for(int i=0;i<S.size();i++){
+	       if(S[i]=='('){
+	           cnt++;
+	           s.push(cnt);
+	           ans.push_back(cnt);
+	       }
+	       else if(S[i]==')'){
+	          ans.push_back(s.top());
+	          s.pop();
+	       }
+	   }
+	   return ans;
+	}
+};
