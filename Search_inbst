@@ -1,0 +1,14 @@
+void find_v(Node* root,int x,bool &ans){
+    if(root!=NULL){
+        if(root->data==x){
+            ans=true;
+        }
+        find_v(root->left,x,ans);
+        find_v(root->right,x,ans);
+    }
+}
+bool search(Node* root, int x) {
+    bool ans=false;
+   find_v(root,x,ans);
+   return ans;
+}
